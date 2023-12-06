@@ -10,14 +10,13 @@ let idImagemAtiva = 0
 const proximoImagem = function(){
     idImagemAtiva++
     if(idImagemAtiva >= todasImagens.length) idImagemAtiva = 0
+    textoAlternativo.innerText = todasImagens[idImagemAtiva].alt
     selecionarImagem()
-    textoAlternativo.innerText = divImagemPrincipal[idImagemAtiva].alt
-    
 }
 
 const voltarImagem = function(){
     idImagemAtiva--
-    textoAlternativo.innerText = divImagemPrincipal[idImagemAtiva].alt
+    textoAlternativo.innerText = todasImagens[idImagemAtiva].alt
     if(idImagemAtiva < 0 ) idImagemAtiva = todasImagens.length - 1
     selecionarImagem()
 }
@@ -36,7 +35,7 @@ btnAnterior.addEventListener('click',voltarImagem)
 todasImagens.forEach(function(imagem, numeroImagem) {
     imagem.addEventListener('click', function() {
         idImagemAtiva = numeroImagem
-        textoAlternativo.innerText = imagem.alt
+        textoAlternativo.innerText = todasImagens[idImagemAtiva].alt
         selecionarImagem()
         
     });
